@@ -66,7 +66,7 @@ def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:   # task 
 
 def broadcast_index(
     big_index: Index, big_shape: Shape, shape: Shape, out_index: OutIndex
-) -> None:
+) -> None: # task 2.1
     """Convert a `big_index` into `big_shape` to a smaller `out_index`
     into `shape` following broadcasting rules. In this case
     it may be larger or with more dimensions than the `shape`
@@ -83,8 +83,13 @@ def broadcast_index(
         None
 
     """
-    # TODO: Implement for Task 2.2.
-    raise NotImplementedError("Need to implement for Task 2.2")
+    offset = len(big_shape) - len(shape)
+    for i in range(len(shape)):
+        if shape[i] == 1:
+            out_index[i] = 0
+        else:
+            out_index[i] = big_index[i + offset]
+
 
 
 def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
@@ -101,8 +106,25 @@ def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
         IndexingError : if cannot broadcast
 
     """
-    # TODO: Implement for Task 2.2.
-    raise NotImplementedError("Need to implement for Task 2.2")
+    n = max(len(shape1), len(shape2))
+    out_shape = [1] * n
+    for i in range(n):
+        if i < len(shape1) and i < len(shape2):
+            if shape1[-1 - i] == shape2[-1 - i]:
+                out_shape[-1 - i] = shape1[-1 - i]
+            elif shape1[-1 - i] == 1:
+                out_shape[-1 - i] = shape2[-1 - i]
+            elif shape2[-1 - i] == 1:
+                out_shape[-1 - i] = shape1[-1 - i]
+            else:
+                raise IndexingError(f"Cannot broadcast {shape1} and {shape2}.")
+        elif i < len(shape1):
+            out_shape[-1 - i] = shape1[-1 - i]
+        elif i < len(shape2):
+            out_shape[-1 - i] = shape2[-1 - i]
+    return tuple(out_shape)
+
+
 
 
 def strides_from_shape(shape: UserShape) -> UserStrides:
