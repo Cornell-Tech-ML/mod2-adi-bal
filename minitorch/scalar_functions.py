@@ -92,10 +92,6 @@ class Log(ScalarFunction):
         return (operators.log_back(a, d_output),)
 
 
-# To implement.
-
-
-# TODO: Implement for Task 1.2.
 class Mul(ScalarFunction):
     """Multiplication function $f(x, y) = x * y$"""
 
