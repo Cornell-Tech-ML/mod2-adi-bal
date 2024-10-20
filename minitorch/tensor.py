@@ -12,6 +12,7 @@ from .autodiff import Context, Variable, backpropagate
 from .tensor_data import TensorData
 
 # Comment these out if not yet implemented
+"""
 from .tensor_functions import (
     EQ,
     LT,
@@ -32,6 +33,7 @@ from .tensor_functions import (
     View,
     tensor,
 )
+"""
 
 if TYPE_CHECKING:
     from typing import Any, Iterable, List, Optional, Sequence, Tuple, Type, Union
@@ -261,7 +263,7 @@ class Tensor:
 
     def backward(self, grad_output: Optional[Tensor] = None) -> None:
         if grad_output is None:
-            assert self.shape == (1,), "Must provide grad_output if non-scalar"
+            assert self.shape == (1,), "Must /provide grad_output if non-scalar"
             grad_output = Tensor.make([1.0], (1,), backend=self.backend)
         backpropagate(self, grad_output)
 
