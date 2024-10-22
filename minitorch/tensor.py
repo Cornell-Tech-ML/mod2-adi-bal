@@ -202,6 +202,18 @@ class Tensor:
         # END CODE CHANGE (2021)
 
     def zeros(self, shape: Optional[UserShape] = None) -> Tensor:
+        """Create a tensor filled with zeros.
+
+        Args:
+        ----
+            shape : Optional shape of the tensor. If None, uses the shape of the current tensor.
+
+        Returns:
+        -------
+            Tensor: A new tensor filled with zeros.
+
+        """
+
         def zero(shape: UserShape) -> Tensor:
             return Tensor.make(
                 [0.0] * int(operators.prod(shape)), shape, backend=self.backend
@@ -370,7 +382,10 @@ class Tensor:
     def sum(self, dim: Optional[int] = None) -> Tensor:
         """Sum the tensor along a specified dimension."""
         self.zero_grad_()
-        return Sum.apply(self if dim is not None else self.contiguous().view(self.size), self._ensure_tensor(dim or 0))
+        return Sum.apply(
+            self if dim is not None else self.contiguous().view(self.size),
+            self._ensure_tensor(dim or 0),
+        )
 
     def mean(self, dim: Optional[int] = None) -> Tensor:
         """Mean of the tensor along a specified dimension."""
