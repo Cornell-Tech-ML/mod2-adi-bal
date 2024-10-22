@@ -1,5 +1,3 @@
-"""Implementation of the autodifferentiation Functions for Tensor."""
-
 from __future__ import annotations
 
 import random

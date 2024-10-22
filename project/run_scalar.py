@@ -102,14 +102,6 @@ class ScalarTrain:
             if epoch % 10 == 0 or epoch == max_epochs:
                 log_fn(epoch, total_loss, correct, losses)
 
-""""
-1. Integrate f(x) = sin(x)
-
-2. Integrate f(x) = x^2
-
-3. Integrate f(x) = x^3
-
-"""
 if __name__ == "__main__":
     PTS = 50
     HIDDEN = 2
