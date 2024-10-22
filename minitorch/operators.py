@@ -80,7 +80,7 @@ def inv(x: float) -> float:
 
 def inv_back(x: float, y: float) -> float:
     """Return the derivative of 1/x with respect to x"""
-    return -1.0 / (x * x)
+    return (-1.0 / (x ** 2)) * y
 
 
 def relu_back(x: float, y: float) -> float:
@@ -132,7 +132,6 @@ def reduce(
     ----
         fn: A binary function that takes two floats and returns a float.
         arr: An iterable of floats to reduce.
-        init: The initial value for the accumulator.
 
     Returns:
     -------
