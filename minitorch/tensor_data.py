@@ -46,7 +46,11 @@ def index_to_position(index: Index, strides: Strides) -> int:  # task 2.1
         Position in storage
 
     """
-    return int(sum(index * strides))
+    return_position = 0
+    n = len(index)
+    for i in range(n):
+        return_position += index[i] * strides[i]
+    return return_position
 
 
 def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:  # task 2.1
