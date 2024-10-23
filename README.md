@@ -257,10 +257,10 @@
 
 <summary> click for log </summary>
 
-        Epoch: 0/1000, loss: 0, correct: 0  
-        Epoch: 10/1000, loss: 36.911340342549025, correct: 40  
-        Epoch: 20/1000, loss: 36.310097256300445, correct: 39  
-        Epoch: 30/1000, loss: 35.425556876741915, correct: 43  
+        Epoch: 0/1000, loss: 0, correct: 0
+        Epoch: 10/1000, loss: 36.911340342549025, correct: 40
+        Epoch: 20/1000, loss: 36.310097256300445, correct: 39
+        Epoch: 30/1000, loss: 35.425556876741915, correct: 43
         Epoch: 40/1000, loss: 35.23475565056721, correct: 43
         Epoch: 50/1000, loss: 35.043179576615834, correct: 43
         Epoch: 60/1000, loss: 34.84409175905893, correct: 44
